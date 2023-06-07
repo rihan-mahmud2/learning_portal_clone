@@ -3,17 +3,17 @@ import React from "react";
 function QuizeRow() {
   return (
     <tr>
-      <td class="table-td">Quiz 1 - JavaScript Interview Questions</td>
-      <td class="table-td">
+      <td className="table-td">Quiz 1 - JavaScript Interview Questions</td>
+      <td className="table-td">
         Debounce Function in JavaScript - JavaScript Job...
       </td>
-      <td class="table-td flex gap-x-2 justify-center">
+      <td className="table-td flex gap-x-2 justify-center">
         <svg
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
+          className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
         >
           <path
             stroke-linecap="round"
@@ -26,7 +26,7 @@ function QuizeRow() {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
+          className="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
         >
           <path
             stroke-linecap="round"

@@ -2,13 +2,13 @@ import React from "react";
 
 function Video() {
   return (
-    <div class="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
+    <div className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
       <svg
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-6 h-6"
+        className="w-6 h-6"
       >
         <path
           stroke-linecap="round"
@@ -24,15 +24,15 @@ function Video() {
 
       <div clas="flex flex-col w-full">
         <a href="#">
-          <p class="text-slate-50 text-sm font-medium">
+          <p className="text-slate-50 text-sm font-medium">
             Things I wish I knew as a Junior Web Developer - Sumit Saha - BASIS
             SoftExpo 2023
           </p>
         </a>
         <div>
-          <span class="text-gray-400 text-xs mt-1">34.5 Mins</span>
-          <span class="text-gray-400 text-xs mt-1"> | </span>
-          <span class="text-gray-400 text-xs mt-1">241K views</span>
+          <span className="text-gray-400 text-xs mt-1">34.5 Mins</span>
+          <span className="text-gray-400 text-xs mt-1"> | </span>
+          <span className="text-gray-400 text-xs mt-1">241K views</span>
         </div>
       </div>
     </div>

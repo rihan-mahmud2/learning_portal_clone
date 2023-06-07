@@ -3,16 +3,18 @@ import React from "react";
 function AssignmentMarkTrow() {
   return (
     <tr>
-      <td class="table-td">Assignment 1 - Scoreboard Application</td>
-      <td class="table-td">JavaScript Bangla Tutorial | JS AJAX | XMLHttp</td>
-      <td class="table-td">100</td>
-      <td class="table-td flex gap-x-2">
+      <td className="table-td">Assignment 1 - Scoreboard Application</td>
+      <td className="table-td">
+        JavaScript Bangla Tutorial | JS AJAX | XMLHttp
+      </td>
+      <td className="table-td">100</td>
+      <td className="table-td flex gap-x-2">
         <svg
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
+          className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
         >
           <path
             stroke-linecap="round"
@@ -26,7 +28,7 @@ function AssignmentMarkTrow() {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
+          className="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
         >
           <path
             stroke-linecap="round"

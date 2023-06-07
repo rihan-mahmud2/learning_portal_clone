@@ -3,7 +3,7 @@ import Option from "./Option";
 
 function Question() {
   return (
-    <form class="quizOptions">
+    <form className="quizOptions">
       <Option />
     </form>
   );

@@ -3,8 +3,8 @@ import Question from "./Question";
 
 function Questions() {
   return (
-    <div class="quiz">
-      <h4 class="question">
+    <div className="quiz">
+      <h4 className="question">
         Quiz 1 - What is a Debounce function in JavaScript?
       </h4>
       <Question />
