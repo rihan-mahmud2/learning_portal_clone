@@ -6,13 +6,21 @@ import { Button, Group } from "@mantine/core";
 import AddAssignment from "../AddAssignment";
 import { useDisclosure } from "@mantine/hooks";
 import { useGetAssignmentByVideoIdQuery } from "../../../features/admin/assignment/assignmentApi";
+import { size } from "lodash";
+import { useGetAssignmentMarkQuery } from "../../../features/student/assignmentMark/assignmentMarkApi";
+import { useSelector } from "react-redux";
 
 function VideoDescription({ video }) {
   const [opened, { open, close }] = useDisclosure(false);
   const { title, description, createdAt, id } = video || {};
+  const { user } = useSelector((state) => state.auth);
+  const { id: student_id } = user || {};
   const { data: quizzes } = useGetQuizeByVideoIdQuery(id);
   const { data: assignment } = useGetAssignmentByVideoIdQuery(id);
-
+  const { data: assignmentMark } = useGetAssignmentMarkQuery({
+    sId: student_id,
+    aId: id,
+  });
   return (
     <div>
       <h1 className="text-lg font-semibold tracking-tight text-slate-100">
@@ -34,6 +42,7 @@ function VideoDescription({ video }) {
         {assignment?.length > 0 && (
           <Group position="center">
             <Button
+              disabled={assignmentMark?.length > 0}
               className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
               onClick={open}
             >
