@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addVideo } from "../../../features/admin/video/videoSlice";
 
-function Video() {
+function Video({ video }) {
+  const dispatch = useDispatch();
+  const [initialDispatch, setInitialDispatch] = useState(false);
+  const { title, views } = video || {};
+  const handleClick = () => {
+    dispatch(addVideo(video));
+  };
+
+  if (!initialDispatch) {
+    setInitialDispatch(true);
+    dispatch(addVideo(video));
+  }
+
   return (
-    <div className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
+    <div
+      onClick={handleClick}
+      className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3"
+    >
       <svg
         fill="none"
         viewBox="0 0 24 24"
@@ -23,16 +40,13 @@ function Video() {
       </svg>
 
       <div clas="flex flex-col w-full">
-        <a href="#">
-          <p className="text-slate-50 text-sm font-medium">
-            Things I wish I knew as a Junior Web Developer - Sumit Saha - BASIS
-            SoftExpo 2023
-          </p>
-        </a>
+        <button>
+          <p className="text-slate-50 text-sm font-medium">{title}</p>
+        </button>
         <div>
           <span className="text-gray-400 text-xs mt-1">34.5 Mins</span>
           <span className="text-gray-400 text-xs mt-1"> | </span>
-          <span className="text-gray-400 text-xs mt-1">241K views</span>
+          <span className="text-gray-400 text-xs mt-1">{views} views</span>
         </div>
       </div>
     </div>

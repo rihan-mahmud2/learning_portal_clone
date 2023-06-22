@@ -1,13 +1,15 @@
 import React from "react";
 import Question from "./Question";
 
-function Questions() {
+function Questions({ question }) {
+  const { question: title, options } = question || {};
+  let quizNo = 1;
   return (
     <div className="quiz">
       <h4 className="question">
-        Quiz 1 - What is a Debounce function in JavaScript?
+        Quiz {quizNo} - {title}
       </h4>
-      <Question />
+      <Question options={options} />
     </div>
   );
 }

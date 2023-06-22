@@ -1,13 +1,38 @@
 import React from "react";
-import AssignmentTrow from "../../components/admin/AssignmentMarkTrow";
+import { useGetAssignmentsQuery } from "../../features/admin/assignment/assignmentApi";
+import AssignmentMarkTrow from "../../components/admin/AssignmentMarkTrow";
+import { Link } from "react-router-dom";
 
 function Assignment() {
+  const { data: assignments, isLoading, isError } = useGetAssignmentsQuery();
+
+  let content = null;
+
+  if (isLoading) {
+    content = <p>The content is Loading......</p>;
+  }
+
+  if (!isLoading && isError) {
+    content = <p>There was an error loading the videos</p>;
+  }
+
+  if (!isError && !isLoading && assignments?.length === 0) {
+    content = <p>There was no video found</p>;
+  }
+  if (!isError && !isLoading && assignments?.length > 0) {
+    content = assignments?.map((assignment) => (
+      <AssignmentMarkTrow key={assignment.id} assignment={assignment} />
+    ));
+  }
+
   return (
     <section className="py-6 bg-primary">
       <div className="mx-auto max-w-full px-5 lg:px-20">
         <div className="px-3 py-20 bg-opacity-10">
           <div className="w-full flex">
-            <button className="btn ml-auto">Add Assignment</button>
+            <Link to={"/admin/addAssignment"} className="btn ml-auto">
+              Add Assignment
+            </Link>
           </div>
           <div className="overflow-x-auto mt-4">
             <table className="divide-y-1 text-base divide-gray-600 w-full">
@@ -20,9 +45,7 @@ function Assignment() {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-600/50">
-                <AssignmentTrow />
-              </tbody>
+              <tbody className="divide-y divide-slate-600/50">{content}</tbody>
             </table>
           </div>
         </div>

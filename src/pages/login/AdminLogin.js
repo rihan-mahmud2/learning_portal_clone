@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LearningPortal from "../../assets/image/learningportal.svg";
 import { useLoginMutation } from "../../features/auth/authApi";
-function Login() {
+import { useSelector } from "react-redux";
+function AdminLogin() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [login, { isError, isLoading, isSuccess }] = useLoginMutation();
+  const auth = useSelector((state) => state.auth);
+  const [login, { isError, error, isLoading, isSuccess }] = useLoginMutation();
+  console.log(auth);
+  if (auth?.accessToken && auth?.user?.role === "admin") {
+    navigate("/admin/dashboard");
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +22,7 @@ function Login() {
     });
 
     if (isSuccess) {
-      navigate("/video");
+      navigate("/admin/dashboard");
     }
   };
 
@@ -31,7 +36,7 @@ function Login() {
             alt="learning_portal"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-100">
-            Sign in to Student Account
+            Sign in to Admin Account
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
@@ -71,17 +76,6 @@ function Login() {
             </div>
           </div>
 
-          <div className="flex items-center justify-end">
-            <div className="text-sm">
-              <Link
-                to="/register"
-                className="font-medium text-violet-600 hover:text-violet-500"
-              >
-                Create New Account
-              </Link>
-            </div>
-          </div>
-
           <div>
             <button
               disabled={isLoading}
@@ -91,11 +85,11 @@ function Login() {
               Sign in
             </button>
           </div>
-          {isError && <p className="error">There was an error</p>}
+          {isError && <p className="error">{error}</p>}
         </form>
       </div>
     </section>
   );
 }
 
-export default Login;
+export default AdminLogin;
